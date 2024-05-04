@@ -3,76 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel ="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Document</title>
 </head>
 <body>
-    <!-- Ваш header -->
     <header class="top">
-    <ul class="info">
-        <li><button>Корзина</button></li>
-        <li><button>Акции</button></li>
-        <li><button>Контакты</button></li>
-        <li><button><img src="https://cdn.icon-icons.com/icons2/1129/PNG/512/menuthreelinesbuttoninterfacesymbol_79952.png" class="menu-icon"></button></li>
-    </ul>
-</header>
+        <ul class="info">
+            <li><img src="https://i.postimg.cc/W4V0Hw0D/PETSHOP-1.png" style="width: 150px; height: px"></li>
+            <li><input type="text" id="searchInput" placeholder="Поиск..." class="search"></li>
+            <li><button>Кошик</button></li>
+            <li><button>Акції</button></li>
+            <li><button>Контакти</button></li>
+        </ul>
+    </header>
 
     <!-- Теперь создадим основное содержимое страницы (body) -->
     <main>
          <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/beaphar/000013867.jpg" alt="Product 1">
         <h3>Beaphar Care+ Корм для декоративних хом'яків</h3>
-        <p>Цена: $10</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $10</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/britcare/000012517.jpg" alt="Product 2">
         <h3>Brit Care Dog Mini Fillets In Gravy з олениною для собак</h3>
-        <p>Цена: $15</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $15</p>
+        <button>Додати до кошика</button>
     </div>
     <!-- Добавляем еще товары -->
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000016145.jpg" alt="Product 3">
         <h3>Royal Canin Xsmall Puppy в соусі</h3>
-        <p>Цена: $20</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $20</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000005820.jpg" alt="Product 4">
         <h3>Royal Canin Sterilised</h3>
-        <p>Цена: $25</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $25</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000002819.jpg" alt="Product 5">
         <h3>Royal Canin Exigent Savour Sensation</h3>
-        <p>Цена: $30</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $30</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000005825.jpg" alt="Product 6">
         <h3>Royal Canin Sterilised в соусі для котів</h3>
-        <p>Цена: $35</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $35</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000000334.jpg" alt="Product 7">
         <h3>Royal Canin Kitten</h3>
-        <p>Цена: $40</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $40</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000000330.jpg" alt="Product 8">
         <h3>Royal Canin Indoor</h3>
-        <p>Цена: $45</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $45</p>
+        <button>Додати до кошика</button>
     </div>
     <div class="product-card">
         <img src="https://pethouse.ua/assets/images/prods/small/royalcanin/000005821.jpg" alt="Product 8">
         <h3>Royal Canin Sterilised</h3>
-        <p>Цена: $50</p>
-        <button>Добавить в корзину</button>
+        <p>Ціна: $50</p>
+        <button>Додати до кошика</button>
     </div>
     </main>
     <footer>
@@ -95,5 +95,22 @@
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
