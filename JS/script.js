@@ -1,10 +1,23 @@
-// Создаем объект корзины
-const cart = [];
+const cart = []; // массив для хранения товаров в корзине
 
 // Функция для добавления товара в корзину
 function addToCart(product) {
     cart.push(product);
-    alert('Товар успешно добавлен в корзину!');
+}
+
+// Функция для отображения информации о корзине
+function showCartInfo() {
+    let cartInfo = '';
+    if (cart.length === 0) {
+        cartInfo = 'Корзина пуста';
+    } else {
+        cartInfo = 'Товары в корзине:\n';
+        cart.forEach(item => {
+            cartInfo += `${item.name}: $${item.price}\n`;
+        });
+    }
+    document.getElementById('cartInfo').innerText = cartInfo;
+    document.getElementById('cartInfo').style.display = 'block';
 }
 
 // Находим все кнопки "Додати до кошика" и добавляем обработчик события на каждую из них
@@ -19,14 +32,6 @@ addToCartButtons.forEach(button => {
         addToCart(product);
     });
 });
-// Находим кнопку "Кошик"
-const cartButton = document.querySelector('.top button');
 
-// Функция для обновления информации о корзине
-function updateCartInfo() {
-    const cartItemCount = cart.length;
-    cartButton.innerText = `Кошик (${cartItemCount})`;
-}
-
-// Обновляем информацию о корзине при загрузке страницы
-updateCartInfo();
+// Добавляем обработчик события для кнопки "Кошик"
+document.getElementById('cartButton').addEventListener('click', showCartInfo);
