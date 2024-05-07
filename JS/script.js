@@ -1,113 +1,32 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartItemsList = document.getElementById('cartItems');
-    const totalPrice = document.getElementById('totalPrice');
-    const cartCounter = document.querySelector('.korz');
-    let cart = [];
+// Создаем объект корзины
+const cart = [];
 
-    function displayCart() {
-        cartItemsList.innerHTML = '';
+// Функция для добавления товара в корзину
+function addToCart(product) {
+    cart.push(product);
+    alert('Товар успешно добавлен в корзину!');
+}
 
-        cart.forEach(item => {
-            const div = document.createElement('div');
-            div.classList.add('cart-item');
-
-            const img = document.createElement('img');
-            img.src = item.image;
-            img.alt = item.name + ' image';
-            img.classList.add('cart-item-image');
-            div.appendChild(img);
-
-            const description = document.createElement('div');
-            description.classList.add('cart-item-description');
-            description.innerHTML = ` 
-                <p>${item.name}</p>
-                <p>Ціна: ${item.price} ua</p>   
-            `;
-            div.appendChild(description);
-
-            const quantityControls = document.createElement('div');
-            quantityControls.classList.add('quantity-controls');
-
-            const increaseBtn = document.createElement('button');
-            increaseBtn.textContent = '+';
-            increaseBtn.addEventListener('click', function() {
-                increaseQuantity(item);
-            });
-            quantityControls.appendChild(increaseBtn);
-
-            const quantityDisplay = document.createElement('span');
-            quantityDisplay.textContent = item.quantity;
-            quantityControls.appendChild(quantityDisplay);
-
-            const decreaseBtn = document.createElement('button');
-            decreaseBtn.textContent = '-';
-            decreaseBtn.addEventListener('click', function() {
-                decreaseQuantity(item);
-            });
-            quantityControls.appendChild(decreaseBtn);
-
-            div.appendChild(quantityControls);
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Видалити';
-            deleteBtn.classList.add('delete-item');
-            deleteBtn.addEventListener('click', function() {
-                removeItemFromCart(item);
-            });
-            div.appendChild(deleteBtn);
-
-            cartItemsList.appendChild(div);
-        });
-
-        cartCounter.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-
-        const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-        totalPrice.textContent = 'Всього в кошику: ' + total + ' ua';
-    }
-
-    function increaseQuantity(item) {
-        item.quantity += 1;
-        displayCart();
-    }
-
-    function decreaseQuantity(item) {
-        if (item.quantity > 1) {
-            item.quantity -= 1;
-            displayCart();
-        }
-    }
-
-    function removeItemFromCart(item) {
-        const index = cart.findIndex(cartItem => cartItem === item);
-        if (index !== -1) {
-            cart.splice(index, 1);
-            displayCart();
-        }
-    }
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.parentNode.querySelector('h3').textContent;
-            const price = parseInt(this.getAttribute('data-price'));
-            const image = this.parentNode.querySelector('img').src;
-            let item = { name, price, image, quantity: 1 };
-            cart.push(item);
-            displayCart();
-        });
-    });
-
-    const cartLink = document.getElementById('cartLink');
-    const modal = document.getElementById('cartModal');
-    const closeBtn = modal.querySelector('.close');
-
-    cartLink.addEventListener('click', function() {
-        modal.style.display = 'block';
-        displayCart();
-    });
-
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
+// Находим все кнопки "Додати до кошика" и добавляем обработчик события на каждую из них
+const addToCartButtons = document.querySelectorAll('.product-card button');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const card = button.closest('.product-card');
+        const product = {
+            name: card.querySelector('h3').innerText,
+            price: parseFloat(card.querySelector('p').innerText.replace('Ціна: $', ''))
+        };
+        addToCart(product);
     });
 });
+// Находим кнопку "Кошик"
+const cartButton = document.querySelector('.top button');
 
+// Функция для обновления информации о корзине
+function updateCartInfo() {
+    const cartItemCount = cart.length;
+    cartButton.innerText = `Кошик (${cartItemCount})`;
+}
+
+// Обновляем информацию о корзине при загрузке страницы
+updateCartInfo();
