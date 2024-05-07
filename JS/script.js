@@ -40,3 +40,18 @@ document.getElementById('cartButton').addEventListener('click', function() {
     console.log('Кнопка "Кошик" нажата');
     showCartInfo();
 });
+// Функция для отображения информации о корзине
+function showCartInfo() {
+    console.log('Функция showCartInfo() вызвана');
+    let cartInfo = '';
+    if (cart.length === 0) {
+        cartInfo = 'Корзина пуста';
+    } else {
+        cartInfo = 'Товары в корзине:\n';
+        cart.forEach(item => {
+            cartInfo += `${item.name}: $${item.price}\n`;
+        });
+    }
+    document.getElementById('cartInfo').innerText = cartInfo;
+    document.getElementById('cartInfo').style.display = 'block';
+}
