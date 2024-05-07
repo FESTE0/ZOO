@@ -36,3 +36,7 @@ addToCartButtons.forEach(button => {
 
 // Добавляем обработчик события для кнопки "Кошик"
 document.getElementById('cartButton').addEventListener('click', showCartInfo);
+document.getElementById('cartButton').addEventListener('click', function() {
+    console.log('Кнопка "Кошик" нажата');
+    showCartInfo();
+});
