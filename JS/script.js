@@ -110,3 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
     });
 });
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const name = this.parentNode.querySelector('h3').textContent;
+        const price = parseInt(this.getAttribute('data-price'));
+        const image = this.parentNode.querySelector('img').src;
+        let item = { name, price, image, quantity: 1 };
+        cart.push(item);
+        console.log(cart); // Добавим эту строку для проверки, что товары добавляются в корзину
+        displayCart();
+    });
+});
+
