@@ -81,11 +81,9 @@ footer p {
 
 main {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Три столбца */
-    grid-template-rows: repeat(3, 1fr); /* Три строки */
+    grid-template-columns: repeat(4, 1fr); /* Теперь четыре столбца */
     grid-gap: 20px;
     padding: 20px;
-    
 }
 
 .product-card {
