@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -11,20 +11,26 @@
         <ul class="info">
             <li><img src="https://i.postimg.cc/W4V0Hw0D/PETSHOP-1.png" style="width: 150px; height: px"></li>
             <li><input type="text" id="searchInput" placeholder="Поиск..." class="search"></li>
-            <li><a href="#" id="cartLink">Кошик<small class="korz">0</small></a></li>
+            <li><button>Кошик</button></li>
             <li><button>Акції</button></li>
             <li><button>Контакти</button></li>
         </ul>
     </header>
 
     <main>
-        <div class="product-card">
+         <div class="product-card">
             <img src="https://pethouse.ua/assets/images/prods/small/beaphar/000013867.jpg" alt="Product 1">
             <h3>Beaphar Care+ Корм для декоративних хом'яків</h3>
             <p>Ціна: $10</p>
             <button class="add-to-cart" data-price="10">Додати до кошика</button>
         </div>
-        <!-- Добавьте остальные товары здесь -->
+        <div class="product-card">
+            <img src="https://pethouse.ua/assets/images/prods/small/britcare/000012517.jpg" alt="Product 2">
+            <h3>Brit Care Dog Mini Fillets In Gravy з олениною для собак</h3>
+            <p>Ціна: $15</p>
+            <button class="add-to-cart" data-price="15">Додати до кошика</button>
+        </div>
+        <!-- Добавьте остальные товарные карточки здесь -->
     </main>
 
     <footer>
@@ -34,7 +40,7 @@
         <ul class="social">
             <li><a href="https://uk-ua.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a></li>
             <li><a href="https://twitter.com/?lang=ru"><ion-icon name="logo-twitter"></ion-icon></a></li>
-            <li><a href="https://ua.linkedin.com/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="https://ua.linkedin.com/"><ion-icon name="logo-linkedin"><ion-icon></a></li>
             <li><a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
         <ul class="menu">
@@ -46,16 +52,9 @@
         </ul>
     </footer>
 
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Кошик</h2>
-            <div id="cartItems"></div>
-            <p id="totalPrice">Всього в кошику: 0</p>
-            <button id="checkoutBtn">Оформити покупку</button>
-        </div>
-    </div>
-
-    <script src="JS/script.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+
