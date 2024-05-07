@@ -55,3 +55,9 @@ function showCartInfo() {
     document.getElementById('cartInfo').innerText = cartInfo;
     document.getElementById('cartInfo').style.display = 'block';
 }
+// Добавляем обработчик события для кнопки "Кошик"
+document.getElementById('cartButton').addEventListener('click', function() {
+    console.log('Кнопка "Кошик" нажата');
+    showCartInfo();
+});
+
