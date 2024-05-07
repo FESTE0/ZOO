@@ -30,6 +30,7 @@ addToCartButtons.forEach(button => {
             price: parseFloat(card.querySelector('p').innerText.replace('Ціна: $', ''))
         };
         addToCart(product);
+        showCartInfo(); // Вызываем функцию для отображения информации о корзине после добавления товара
     });
 });
 
