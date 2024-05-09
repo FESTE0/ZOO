@@ -219,4 +219,7 @@ main {
   text-decoration: none;
   cursor: pointer;
 }
-
+/* В CSS файле */
+.removeButton {
+  margin-top: 5px;
+}
